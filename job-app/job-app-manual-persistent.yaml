@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: job-app-
+  namespace: jobs
+spec:
+  template:
+    spec:
+      containers:
+      - name: job-app
+        image: cimox/job-app:0.0.6
+        env:
+          - name: EDGE_API_URL
+            value: 'http://edge-app-service.edge.svc.cluster.local:5000/job'
+          - name: JOB_TYPE
+            value: 'stateful'
+          - name: FIB_N
+            value: '350'  # Set large number to create CPU pressure
+        volumeMounts:
+          - mountPath: /mnt/storage
+            name: storage
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      volumes:
+        - name: storage
+          hostPath:
+            path: /c/minikube-pv
+      restartPolicy: Never
+  backoffLimit: 1
