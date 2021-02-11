@@ -26,8 +26,10 @@ In this tutorial we will use pre-built docker images published on Dockerhub to e
 - Assign resources requests (CPU, memory) to the pods.
 - Control pod lifecycle using Kubernetes probes.
 
-TODO: add architecture diagram
-
+![Kubernetes for dummies architecture diagrams](architecture.png)
+<p align="center">
+    Kubernetes for dummies architecture diagram
+</p>
 
 Tools not mentioned in this tutorial, but recommended to study:
 - [Helm](https://helm.sh/) as a Kubernetes package manager.
