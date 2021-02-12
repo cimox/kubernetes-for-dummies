@@ -31,14 +31,14 @@ spec:
           httpGet:
             path: /ready
             port: 5000
-          initialDelaySeconds: 3
-          periodSeconds: 3
+          initialDelaySeconds: 6
+          periodSeconds: 6
         readinessProbe:
           httpGet:
             path: /ready
             port: 5000
-          initialDelaySeconds: 3
-          periodSeconds: 3
+          initialDelaySeconds: 6
+          periodSeconds: 6
           successThreshold: 1
           failureThreshold: 5
 ---
