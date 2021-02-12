@@ -6,7 +6,7 @@ metadata:
   labels:
     app: cloud-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: cloud-app
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: cloud-app
-        image: cimox/cloud-app:0.0.5
+        image: cimox/cloud-app:0.0.6
         ports:
         - containerPort: 5000
         env:
@@ -31,8 +31,8 @@ spec:
           httpGet:
             path: /ready
             port: 5000
-          initialDelaySeconds: 6
-          periodSeconds: 6
+          initialDelaySeconds: 60
+          periodSeconds: 5
         readinessProbe:
           httpGet:
             path: /ready

@@ -199,6 +199,15 @@ Before disk write: ['35.txt']
 Reading pre-calculated fib number from file /mnt/storage/35.txt
 ```
 
+### 7 Start jobs programatically using Cloud APP
+Kubernetes provides API, which can be controlled by any progamming language. For major language like Java, Python, C#, Go., etc. there are client libraries. For python see https://github.com/kubernetes-client/python
+
+To see how it can be implemented see source code of the `edge-app/edge-app.py`. To actually start for example K8s job from python code, call Cloud APP API doing this job
+```
+> curl http://localhost:5000/edge/stateless/fib_n/35
+```
+Or you can start a `stateful` job as well.
+
 
 ## Recommended best practices
 ### 1 Resources management
@@ -243,3 +252,6 @@ Execute into the running pod and start bash
 ```
 > kubectl exec -it <copy pod name here> -n cloud -- /bin/bash
 ```
+
+### 7 Kubernetes failures from the wild
+[Kubernetes Failure Stories](https://k8s.af/)

@@ -18,7 +18,7 @@ def hello_world():
 
 @app.route('/ready')
 def ready():
-    sleep(5)  # Sleep for 5s
+    sleep(2)  # Sleep for 2s
     return '', 200
 
 
@@ -27,7 +27,7 @@ def edge(job_type, fib_n):
     print(f'Starting {job_type} with fib N {fib_n} on the edge')
 
     try:
-        response = requests.get(EDGE_API_URL + '/' + job_type + '/' + fib_n)
+        response = requests.get(EDGE_API_URL + '/' + job_type + '/fib_n/' + fib_n)
 
         if response.status_code == 200:
             return response.text, 200
