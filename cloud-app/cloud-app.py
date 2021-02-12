@@ -22,12 +22,12 @@ def ready():
     return '', 200
 
 
-@app.route('/edge/<job_type>')
-def edge(job_type):
-    print(f'Starting {job_type} on the edge')
+@app.route('/edge/<job_type>/fib_n/<fib_n>')
+def edge(job_type, fib_n):
+    print(f'Starting {job_type} with fib N {fib_n} on the edge')
 
     try:
-        response = requests.get(EDGE_API_URL + '/' + job_type)
+        response = requests.get(EDGE_API_URL + '/' + job_type + '/' + fib_n)
 
         if response.status_code == 200:
             return response.text, 200
