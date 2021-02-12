@@ -14,7 +14,8 @@ JOB_STATEFUL = 'stateful'
 JOB_STATELESS = 'stateless'
 JOB_NAME = os.getenv('JOB_NAME', 'job-app-')
 
-config.load_kube_config()
+# config.load_kube_config()
+config.load_incluster_config()
 batch_v1 = client.BatchV1Api()
 
 
@@ -50,12 +51,18 @@ def create_job_object(job_type, fib_n):
     )
 
     # Configure Volume template
-    volume = client.V1Volume(
-        name='storage',
-        host_path={
-            'path': '/c/minikube-pv'
-        }
-    )
+    if job_type == JOB_STATEFUL:
+        volume = client.V1Volume(
+            name='storage',
+            host_path={
+                'path': '/c/minikube-pv'
+            }
+        )
+    else:
+        volume = client.V1Volume(
+            name='storage',
+            empty_dir={}
+        )
 
     # Create and configurate a spec section
     template = client.V1PodTemplateSpec(
