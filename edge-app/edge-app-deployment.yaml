@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: edge-app
-        image: cimox/edge-app:0.0.2
+        image: cimox/edge-app:0.0.3
         ports:
         - containerPort: 5000
         env:

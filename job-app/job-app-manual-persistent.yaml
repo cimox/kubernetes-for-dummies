@@ -15,7 +15,7 @@ spec:
           - name: JOB_TYPE
             value: 'stateful'
           - name: FIB_N
-            value: '350'  # Set large number to create CPU pressure
+            value: '35'
         volumeMounts:
           - mountPath: /mnt/storage
             name: storage
